@@ -25,6 +25,13 @@ impl Config {
             !args.iter()
                 .any(|arg| arg.to_lowercase() == "--case_insensitive")
         }, |val| val == "0" || val.to_lowercase() == "false");
+        
+        // let case_sensitive = match env::var("CASE_INSENSITIVE") {
+        //     Ok(v) => v.eq("1"),
+        //     _ => args.iter().any(
+        //         |arg: &[String]| arg.to() == "--case_insensitive"
+        //     ),
+        // };
 
         Ok(Config { query, filename, case_sensitive })
     }

@@ -9,7 +9,7 @@ fn main() {
     // dbg!(&args);
 
     let config = Config::build(&args).unwrap_or_else(|err| {
-        println!("Problem parsing: {}", err);
+        eprintln!("Problem parsing: {}", err);
         process::exit(1)
     });
 
@@ -18,7 +18,7 @@ fn main() {
 
     // run(Config) 有可能有 Error，故需要處理錯誤情況
     if let Err(e) = run(config) {
-        println!("Error: {}",e);
+        eprintln!("Error: {}",e);
         process::exit(1);
     };
 }
