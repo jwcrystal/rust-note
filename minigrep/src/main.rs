@@ -5,12 +5,17 @@ use minigrep::{Config, run};
 fn main() {
     // 命令行輸入參數包含非 Unicode 字符，std::env::args 會直接崩潰
     // std::env::args_os 會引入跨平台複雜性，讓用戶自己處理參數錯誤
-    let args: Vec<String> = env::args().collect();
-    // dbg!(&args);
+    // let args: Vec<String> = env::args().collect();
+    // // dbg!(&args);
 
-    let config = Config::build(&args).unwrap_or_else(|err| {
+    // let config = Config::build(&args).unwrap_or_else(|err| {
+    //     eprintln!("Problem parsing: {}", err);
+    //     process::exit(1)
+    // });
+
+    let config = Config::build(env::args()).unwrap_or_else(|err|{
         eprintln!("Problem parsing: {}", err);
-        process::exit(1)
+        process::exit(1);
     });
 
     println!("Searching for {}", config.query);

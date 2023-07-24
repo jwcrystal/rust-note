@@ -20,3 +20,4 @@ rust-project.json
 
 # else
 .DS_Store
+output.txt
